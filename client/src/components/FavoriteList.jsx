@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FavoriteCharacter } from "./FavoriteCharacter";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
 export function FavoriteList() {
   const [loading, setLoading] = useState(true);
@@ -30,8 +30,7 @@ export function FavoriteList() {
     );
 
     //Notify the user if I successfully delete the character
-    toast.success('Successfully deleted!')
-
+    toast.success("Successfully deleted!");
   };
 
   return (
@@ -41,15 +40,21 @@ export function FavoriteList() {
         <div>Loading...</div>
       ) : (
         <div className="flex flex-wrap justify-center">
-          {characters.map((character) => (
-            <div key={character.characterId}>
-              <FavoriteCharacter
-                key={character.characterId}
-                character={character}
-                onDelete={handleDelete}
-              />
+          {characters.length === 0 ? (
+            <div className="text-3xl p-8 text-center">
+              Oh! There are no favorite characters. Better go get some!
             </div>
-          ))}
+          ) : (
+            characters.map((character) => (
+              <div key={character.characterId}>
+                <FavoriteCharacter
+                  key={character.characterId}
+                  character={character}
+                  onDelete={handleDelete}
+                />
+              </div>
+            ))
+          )}
         </div>
       )}
     </div>

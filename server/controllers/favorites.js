@@ -5,9 +5,6 @@ const FavoriteController = {
     try {
       const allFavorites = await Favorite.findAll();
 
-      if (allFavorites.length === 0) {
-        return res.status(404).json({ error: "No favorites found" });
-      }
 
       res.status(200).json({ favorites: allFavorites });
     } catch (error) {
