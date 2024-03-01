@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Favorite.init(
     {
+      characterId: DataTypes.INTEGER,
       name: DataTypes.STRING,
       status: DataTypes.STRING,
       species: DataTypes.STRING,
